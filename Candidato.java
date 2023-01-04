@@ -1,6 +1,9 @@
+import java.util.List;
+
 public class Candidato extends Pessoa {
 
-    public Integer votosRecebidos = 0;
+    // permite identificar os eleitores que votaram em cada candidato
+    public List<Eleitor> votosRecebidos;
 
     public Candidato(String nome) {
         this.nome = nome;
