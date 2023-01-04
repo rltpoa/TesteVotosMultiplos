@@ -20,11 +20,12 @@ public class VotosMultiplos {
     }
 
     public static List<Pessoa> criaPessoas(int quantidade, PessoaTipo tipo) {
+        String prefixo = tipo.equals(PessoaTipo.CANDIDATO) ? "candidato" : "votante";
         List<Pessoa> novaLista = new ArrayList<Pessoa>();
         IntStream.range(1, quantidade + 1)
                 .forEach(x -> novaLista.add(
-                        tipo.equals(PessoaTipo.CANDIDATO) ? new Candidato("candidato" + String.valueOf(x))
-                                : new Eleitor("votante" + String.valueOf(x))));
+                        tipo.equals(PessoaTipo.CANDIDATO) ? new Candidato(prefixo + String.valueOf(x))
+                                : new Eleitor(prefixo + String.valueOf(x))));
         return novaLista;
     }
 
