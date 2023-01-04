@@ -6,10 +6,10 @@ public class VotosMultiplos {
 
     public static void main(String[] args) {
 
-        int quantidadeVotantes = 5;
+        int quantidadeEleitores = 5;
         int quantidadeCandidatos = 3;
 
-        List<Pessoa> votantes = criaPessoas(quantidadeVotantes, PessoaTipo.ELEITOR);
+        List<Pessoa> votantes = criaPessoas(quantidadeEleitores, PessoaTipo.ELEITOR);
         votantes.forEach(votante -> System.out.println(votante.nome));
 
         List<Pessoa> candidatos = criaPessoas(quantidadeCandidatos, PessoaTipo.CANDIDATO);
