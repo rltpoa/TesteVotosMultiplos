@@ -9,23 +9,23 @@ public class VotosMultiplos {
         int quantidadeEleitores = 5;
         int quantidadeCandidatos = 3;
 
-        List<Pessoa> votantes = criaPessoas(quantidadeEleitores, PessoaTipo.ELEITOR);
+        List<Eleitor> votantes = criaPessoas(quantidadeEleitores, Eleitor.class);
         votantes.forEach(votante -> System.out.println(votante.nome));
 
-        List<Pessoa> candidatos = criaPessoas(quantidadeCandidatos, PessoaTipo.CANDIDATO);
+        List<Candidato> candidatos = criaPessoas(quantidadeCandidatos, Candidato.class);
         candidatos.forEach(votante -> System.out.println(votante.nome));
 
         System.out.println(candidatos.get(0).votosRecebidos);
 
     }
 
-    public static List<Pessoa> criaPessoas(int quantidade, PessoaTipo tipo) {
-        String prefixo = tipo.equals(PessoaTipo.CANDIDATO) ? "candidato" : "votante";
-        List<Pessoa> novaLista = new ArrayList<Pessoa>();
+    public static <T> List<T> criaPessoas(int quantidade, Class<T> tipo) {
+        String prefixo = tipo.equals(Candidato.class) ? "candidato" : "votante";
+        List<T> novaLista = new ArrayList<T>();
         IntStream.range(1, quantidade + 1)
                 .forEach(x -> novaLista.add(
-                        tipo.equals(PessoaTipo.CANDIDATO) ? new Candidato(prefixo + String.valueOf(x))
-                                : new Eleitor(prefixo + String.valueOf(x))));
+                        tipo.equals(Candidato.class) ? (T) new Candidato(prefixo + String.valueOf(x))
+                                : (T) new Eleitor(prefixo + String.valueOf(x))));
         return novaLista;
     }
 
